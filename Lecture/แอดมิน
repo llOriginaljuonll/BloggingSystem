@@ -1,0 +1,7 @@
+; createsuperuser
+id admin
+pw admin
+
+admin.site.register(Category)
+วิเคราะห์
+เป็นคำสั่งให้แอดมินเข้าไปจัดการข้อมูลใน โมเดลนั้นๆได้ในที่นี้คือ Category โมเดล

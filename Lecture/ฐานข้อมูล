@@ -1,0 +1,59 @@
+; การเชื่อมต่อฐานข้อมูล
+1. ลงโปรแกรม xampp control panel
+2. ตั้งค่าโปรแกรมใน xampp
+3. โหลด mysqlclient package
+4. ตั้งค่าใน settings.py ในส่วน database
+
+; ข้อมูลหมวดหมู่บทความ
+1.ชื่อคอลัมน์: ID(PK)
+  ชนิดข้อมูล: Integer
+  ความหมาย: รหัสหมวดหมู่บทความ
+
+2.ชื่อคอลัมน์: CategoryName
+  ชนิดข้อมูล: CharField
+  ความหมาย: ชื่อหมวดหมู่บทความ
+
+3.ชื่อคอลัมน์: Description
+  ชนิดข้อมูล: TextField
+  ความหมาย: คำอธิบายทบความ
+
+4.ชื่อคอลัมน์: Content
+  ชนิดข้อมูล: TextField
+  ความหมาย: เนื้อหาบทความ
+
+5.ชื่อคอลัมน์: Writer
+  ชนิดข้อมูล: CharField
+  ความหมาย: ชื่อนักเขียน
+
+6.ชื่อคอลัมน์: Views
+  ชนิดข้อมูล: Integer
+  ความหมาย: จำนวนยอดผู้เข้าชม
+
+7.ชื่อคอลัมน์: Image
+  ชนิดข้อมูล: ImageField
+  ความหมาย: ภาพปก
+
+8.ชื่อคอลัมน์: Created
+  ชนิดข้อมูล: DateTimeField
+  ความหมาย: วันที่เขียนบทความ
+
+9.ชื่อคอลัมน์: Category_id(FK)
+  ชนิดข้อมูล: Integer
+  ความหมาย: รหัสหมวดหมู่บทความ
+
+  FK(Foreign Key) คือ + การสร้างกฎความสัมพันธ์ระหว่างสองตารางเข้าด้วยกัน + โดยที่ Foreign Key จะเป็น + คอลัมน์ของตารางลูก + ที่ใช้เชื่อมโยงกันกับตารางแม่ + ที่เป็น Primary Key(PK)
+
+ตัวอย่าง การสร้าง model
+class Category(models.Model):
+	name = models.CharField(max_length = 255, unique = True)
+วิเคราะห์
+1. unique เป็นการบอกว่าห้ามสร้างชื่อซ้ำ
+2. models.Model คือ (คำตอบใน stackoverflow) It means: make the Category class inherit from the Model base class from the models module.
+	2.1 inherit แปลว่า สืบทอด
+
+; __str__ คืออะไร ทำหน้าที่อะไร?
+
+; Tip
+1. ถ้าเราไม่ได้ตั้งค่า PK การ migrations จะมีการสร้าง PK ขึ้นมาเองโดยอัตโนมัติ
+
+
