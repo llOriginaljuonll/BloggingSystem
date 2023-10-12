@@ -54,6 +54,31 @@ class Category(models.Model):
 ; __str__ คืออะไร ทำหน้าที่อะไร?
 
 ; Tip
-1. ถ้าเราไม่ได้ตั้งค่า PK การ migrations จะมีการสร้าง PK ขึ้นมาเองโดยอัตโนมัติ
+1.ถ้าเราไม่ได้ตั้งค่า PK + การ migrations ครั้งแรก + จะมีการสร้าง PK ขึ้นมาเองโดยอัตโนมัติ
+2.latest = Blogs.objects.all().order_by('-pk')[:2]
+	วิเคราะห์
+	2.1 order_by เป็นคำสั่งให้เราเรียงลำดับข้อมูล
+	2.2 ('pk') คือ ให้เราเรียงตาม pk (อ้างอิงจาก database)
+	2.3 ถ้าใส่เครื่องหมายติดลบ คือ ให้เรียงจากมากไปน้อยแทน
+	2.4 latest จึงเป็นการแสดงชุดข้อมูลจากล่าสุดเรียงไปเก่าสุด
+	2.5 [:2] + เป็นการบอกว่าให้แสดงข้อมูล + แค่สองชุดเท่านั้น
+; การนำข้อมูลมาใช้ใน Template
+1.ดึงข้อมูลมาเก็บไว้ในตัวแปรหนึ่งใน ฟังก์ชั่นที่อยู่ใน Views ที่จะส่งข้อมูลเราไปยัง Template ที่เราต้องการให้ข้อมูลไปแสดง
+2.import โมเดลที่เราต้องการดึงข้อมูลเข้ามา
 
+; views.py
+from category.models import Category
+	def index(request):
+	categories = Category.objects.all()
+	return render(request, 'frontend/index.html', {'categories': categories})
 
+3.{'categories': categories} หมายความว่าด้านซ้ายคือตัวแปรที่จะเอาไปใช้ใน Template ด้านขวาคือตัวแปรที่เราใช้เก็บข้อมูล
+4.สร้างตัวแปรวนลูปในบันทัดที่เราต้องการ
+
+; template
+ <ul>
+	{% for category in categories %}
+	<li><a href="#">{{ category.name }}<span>(0)</span></a></li>
+	{% endfor %}
+</ul>
+5.{{ category.name }} = name คือชื่อ field ที่เราอ้างอิง
