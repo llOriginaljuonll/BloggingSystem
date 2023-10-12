@@ -11,7 +11,7 @@ def index(request):
 	latest = Blogs.objects.all().order_by('-pk')[:4]
 
 	# pagination
-	paginator = Paginator(blogs, 4)
+	paginator = Paginator(blogs, 2)
 	try:
 		page = int(request.GET.get('page', '1'))
 	except:
