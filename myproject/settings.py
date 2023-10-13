@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 	'blogs',
-	'category'
+	'category',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
@@ -82,8 +83,8 @@ DATABASES = {
         "NAME": 'myblogs',
 		'USER': 'root',
 		'PASSWORD': '',
-        # 'PORT': '3310',
-        # 'HOST': 'localhost',
+        'PORT': '3310',
+        'HOST': 'localhost',
     }
 }
 

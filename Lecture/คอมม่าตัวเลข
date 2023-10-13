@@ -1,0 +1,10 @@
+; วิธีการ
+1. ต้องการนำเข้า humanize ใน installed apps ใน settings.py
+   INSTALLED_APPS = ['django.contrib.humanize']
+2. ถ้าเราต้องการใช้ 'คอมม่าตัวเลข' ใน template ไหนให้เราเพิ่มคำว่า {% load humanize %} ลงไป
+3. ไปยัง field ที่เราต้องการเติม 'คอมม่า' แล้วเพิ่มคำว่า 'intcomma' ลงไป
+   ตัวอย่าง
+   {{ blogs.views | intcomma }}
+
+; ข้อสังเกต
+1. humanize น่าจะมีความสามารถทอะไรได้มากกว่านี้ลองอ่าน documetation ดู

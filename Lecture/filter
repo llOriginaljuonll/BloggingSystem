@@ -1,0 +1,9 @@
+; ตัวอย่าง
+; views.py
+def searchCategory(request, cat_id):
+    blogs = Blogs.objects.filter(category_id=cat_id)
+    CategoryName = Category.objects.get(id=cat_id)
+    return render(request, 'frontend/searchCategory.html', {'blogs':blogs})
+
+วิเคราะห์
+1. Blogs.objects.filter(category_id=cat_id) แปลว่า + คัดกรองข้อมูล + ในคอลัมน์ category_id + เก็บลงในตัวแปร blogs

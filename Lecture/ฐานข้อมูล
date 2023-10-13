@@ -84,3 +84,10 @@ from category.models import Category
 	{% endfor %}
 </ul>
 5.{{ category.name }} = name คือชื่อ field ที่เราอ้างอิง
+
+6. def searchCategory(request, cat_id):
+       Blogs.objects.filter(category_id=cat_id)
+   วิเคราะห์
+   6.1 (category_id=cat_id) 
+       - category_id คือ column ใน Blogs โมเดล
+       - cat_id คือ parameter ที่รับค่าเข้ามาในฟังก์ชั่น
