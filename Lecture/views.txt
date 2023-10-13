@@ -1,0 +1,14 @@
+; Paginator
+
+    def index(request):
+    blogs = Blogs.object.all()
+    paginator = Paginator(blogs, 3)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+        
+วิเคราะห์
+1.blogs ใน paginator + อ้างอิงมาจากการดึงข้อมูลทั้งหมด + จากตัวแปร blogs ด้านบน
+2.'3' คือ + ต้องการแสดงข้อมูล + จำนวนเท่าไร + ต่อกี่หน้า + ในที่นี้คือ 3 บทความ
+
