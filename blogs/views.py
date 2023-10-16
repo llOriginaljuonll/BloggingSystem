@@ -67,5 +67,4 @@ def searchWriter(request, writer):
 	suggestion = Blogs.objects.all().order_by('views')[:3]
 	
 	blogs = Blogs.objects.filter(writer=writer)
-	writerName = Blogs.objects.get(id=writer) 
-	return render(request, 'frontend/writer.html', {'blogs':blogs, 'categories': categories, 'popular':popular, 'suggestion':suggestion, 'writerName':writerName})
+	return render(request, 'frontend/writer.html', {'blogs':blogs, 'categories': categories, 'popular':popular, 'suggestion':suggestion, 'writer':writer})

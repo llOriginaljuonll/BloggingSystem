@@ -1,9 +1,0 @@
-ปัญหา
-remote: Permission to llOriginaljuonll/BloggingSystem.git denied to jisoooh0202.
-
-วิธีแก้
-1.ไปที่ repository ที่ต้องการ
-2.Settings > Collaborators > Manageaccess > Add people(ป้อนไอดีที่ถูก denied)
-3.รหัสจะเข้าโทรศัพท์ของเจ้าของไอดี
-4.เข้าไปใน gmail เจ้าของไอดี
-5.ยินยันสิทธิ์ และกรอกรหัสที่ได้รับจากโทรศัพท์ตามข้อ 3.
