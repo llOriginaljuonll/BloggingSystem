@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import auth
 from category.models import Category
 from django.core.files.storage import FileSystemStorage
+from django.contrib import messages
 
 # Create your views here.
 @login_required(login_url='member')
@@ -25,9 +26,24 @@ def displayForm(request):
     
 def insertData(request):
 	if request.method == 'POST' and request.FILES['image']:
-          image = request.FILES['image']
-          fs = FileSystemStorage()
-          #อัพโหลด
-          img_url = 'blogImages/' + image.name
-          filename = fs.save(img_url + image.name, image)
-          return redirect('displayForm')
+          datafile = request.FILES['image']
+          #รับค่าจากฟอร์ม
+          name = request.POST['name']
+          category = request.POST['category']
+          description = request.POST['description']
+          content = request.POST['content']
+          writer = auth.get_user(request)
+
+          if str(datafile.content_type).startswith('image'):
+            #อัพโหลด
+            fs = FileSystemStorage()
+            img_url = 'blogsImages/' + datafile.name
+            filename = fs.save(img_url, datafile)
+            #บันทึกข้อมูลบทความ
+            blog = Blogs(name=name, category_id=category, description=description, content=content, writer=writer, image=img_url)
+            blog.save()
+            messages.info(request, 'บันทึกข้อมูลเรียบร้อย')
+            return redirect('displayForm')
+          else:
+              messages.info(request, 'ไฟล์ที่อัพโหลดไม่รองรับ กรุณาอัพโหลดไฟล์รูปภาพอีกครั้ง')
+              return redirect('displayForm')

@@ -123,6 +123,8 @@
                                     <li>
                                         
                                         {% if request.user.is_authenticated and request.user.username%}
+                                        <!-- request.user.is_authenticated = มีการล็อกอินหรือไม่? -->
+                                        <!-- request.user.username = ให้นำ username มาใช้ -->
                                         <a href="{% url 'searchWriter' request.user.username %}" target="_blank">
                                             <i class="fa fa-user fa-fw pull-right"></i>
                                             ดูบทความของฉัน
